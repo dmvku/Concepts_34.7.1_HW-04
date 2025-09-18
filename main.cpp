@@ -34,8 +34,8 @@ int main()
     static_assert(ComplexConcept<Test>);
     
     Test t;
-    std::cout << "This method returns an <int> that is converted " 
-        << "to a <long>\n\tfrom an ASCII character 'S' - " << t.hash() << "\n";
+    std::cout << "This method returns an <int> from an ASCII character 'S' - "
+        << t.hash() << "\nthat can be converted to a <long>.\n\n";
     std::cout << t.toString() << "\n";
 
     return 0;
