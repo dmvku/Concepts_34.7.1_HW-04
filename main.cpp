@@ -16,27 +16,45 @@ class Test
     public:
     Test() {}
     ~Test() {}
-    //virtual ~Test() = default;
+    /*virtual ~Test() = default; bad destructor
+
+    std::string hash()
+    {
+        return "Bad function";
+    }
+
+    bool toString()
+    {
+        return false; // bad function
+    }*/
 
     int hash()
     {
-       return 'S';
+        return 'S';
     }
-
+    
     std::string toString()
     {
         return "This method returns <std::string>";
     }
+
+
 };
+
+template <ComplexConcept T>
+void outClass(T& obj)
+{
+    std::cout << "This method returns an <int> from an ASCII character 'S' - "
+        << obj.hash() << "\nthat can be converted to a <long>.\n\n";
+    std::cout << obj.toString() << "\n";
+}
 
 int main()
 {
     static_assert(ComplexConcept<Test>);
     
     Test t;
-    std::cout << "This method returns an <int> from an ASCII character 'S' - "
-        << t.hash() << "\nthat can be converted to a <long>.\n\n";
-    std::cout << t.toString() << "\n";
+    outClass(t);
 
     return 0;
 }
